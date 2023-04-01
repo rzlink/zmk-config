@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define COLEM 1
+#define QWERT 1
 #define LOWER 2
 #define RAISE 3
 #define FUNC  4
@@ -17,6 +17,24 @@
 / {
 	keymap {
 		compatible = "zmk,keymap";
+
+                colem_layer {
+                        bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  ESC     │  W       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  :;      │ QWERT
+            &kp ESC    &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J     &kp L       &kp U      &kp Y      &kp SEMI   &tog QWERT
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ CTRL/TAB │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  :;
+        &mt LCTRL TAB  &kp A      &kp R      &kp S      &kp T      &kp G          &kp M      &kp N      &kp E      &kp I      &kp O      &kp SQT
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
+        //│ SHFT     │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  ALT `
+           &kp LSHFT   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &mt RALT GRAVE
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
+        //                                 │  GUI     │  LWR/ESC │  SPC     │   │  ENT     │  RAISE   │  BKSP    │
+				           &kp LGUI  &lt LOWER ESC &kp SPACE      &kp RET    &mo RAISE  &kp BSPC
+        //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+                        >;
+                };
 
 		qwerty_layer {
 
@@ -30,28 +48,9 @@
 //                                    |   GUI   | LWR/ESC |   SPC   |          |   ENT   |  RAISE  |  BKSP   |
 //                                    '---------+---------+---------'          '---------+---------+---------'
 			bindings = <
-   &kp ESC        &kp Q     &kp W     &kp E     &kp R         &kp T     /**/   &kp Y     &kp U     &kp I     &kp O     &kp P     &tog COLEM
+   &kp ESC        &kp Q     &kp W     &kp E     &kp R         &kp T     /**/   &kp Y     &kp U     &kp I     &kp O     &kp P     &tog QWERT
    &mt LCTRL TAB  &kp A     &kp S     &kp D     &kp F         &kp G     /**/   &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
    &kp LSHFT      &kp Z     &kp X     &kp C     &kp V         &kp B     /**/   &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &mt RALT GRAVE
-				      &kp LGUI  &lt LOWER ESC &kp SPACE /**/   &kp RET   &mo RAISE &kp BSPC
-			>;
-		};
-
-		colem_layer {
-
-// .----------------------------------------------------------------.          .-----------------------------------------------------------.
-// |   ESC        |    Q    |    W    |    F    |    P    |    B    |          |    J    |    L    |    U    |    Y    |    :;   |  QWERT  |
-// |--------------+---------+---------+---------+---------+---------|          |---------+---------+---------+---------+---------+---------|
-// |   CTRL/Tab   |    A    |    R    |    S    |    T    |    G    |          |    M    |    N    |    E    |    I    |    O    |    "'   |
-// |--------------+---------+---------+---------+---------+---------|          |---------+---------+---------+---------+---------+---------|
-// |   SHFT       |    Z    |    X    |    C    |    D    |    V    |          |    K    |    H    |    <,   |    >.   |    ?/   | ALT / ` |
-// '----------------------------------+---------+---------+---------+          |---------+---------+---------+-----------------------------'
-//                                    |   GUI   | LWR/ESC |   SPC   |          |   ENT   |  RAISE  |  BKSP   |
-//                                    '---------+---------+---------'          '---------+---------+---------'
-			bindings = <
-   &kp ESC        &kp Q     &kp W     &kp F     &kp P         &kp B     /**/   &kp J     &kp L     &kp U     &kp Y     &kp SEMI  &tog COLEM
-   &mt LCTRL TAB  &kp A     &kp R     &kp S     &kp T         &kp G     /**/   &kp M     &kp N     &kp E     &kp I     &kp O     &kp SQT
-   &kp LSHFT      &kp Z     &kp X     &kp C     &kp D         &kp V     /**/   &kp K     &kp H     &kp COMMA &kp DOT   &kp FSLH  &mt RALT GRAVE
 				      &kp LGUI  &lt LOWER ESC &kp SPACE /**/   &kp RET   &mo RAISE &kp BSPC
 			>;
 		};
