@@ -75,10 +75,10 @@
                 raise_layer {
                         bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          │          │   │  INS     │  HOME    │  PAGEUP  │          │          │  PRINT
+        //│          │          │          │          │          │          │   │  INS     │  HOME    │ PAGE UP  │          │          │  PRINT
             &trans     &trans     &trans     &trans     &trans     &trans         &kp INS    &kp HOME   &kp PG_UP  &trans     &trans     &kp PRINTSCREEN
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │          │   │  DEL     │  END     │ PAGEDOWN │          │          │  BREAK
+        //│          │          │          │          │          │          │   │  DEL     │  END     │ PAGE DOWN│          │          │  BREAK
             &trans     &trans     &trans     &trans     &trans     &trans         &kp DEL    &kp END    &kp PG_DN  &trans     &trans     &kp PAUSE_BREAK
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
         //│          │          │          │          │          │          │   │          │          │          │          │          │
@@ -93,14 +93,14 @@
                 function_layer {
                         bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          │          │   │  VOL+    │  BRIGHT+ │          │          │          │
-            &reset     &trans     &trans     &trans     &trans     &trans      &kp C_VOLUME_UP   &kp C_BRIGHTNESS_INC &trans  &trans  &trans &reset
+        //│ CLEAR BT │          │          │          │          │PROFILE 0 │   │  VOL+    │          │          │          │          │  BRIGHT+
+            &bt BT_CLR &trans     &trans     &trans     &trans   &bt BT_SEL 0   &kp C_VOL_UP &trans     &trans     &trans     &trans   &kp C_BRI_UP
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  BTCLR   │  BT1     │  BT2     │  BT3     │  BT4     │  BT5     │   │  VOL-    │  BRIGHT- │          │          │          │
-  &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &kp C_VOLUME_DOWN &kp C_BRIGHTNESS_DEC &trans  &trans  &trans &trans
+        //│          │          │          │          │          │PROFILE 1 │   │  VOL-    │          │          │          │          │  BRIGHT-
+            &trans     &trans     &trans     &trans     &trans   &bt BT_SEL 1   &kp C_VOL_DN &trans     &trans     &trans     &trans   &kp C_BRI_DEC
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-        //│          │          │          │          │          │          │   │  MUTE    │          │          │          │          │  OUT_TOG
-            &trans     &trans     &trans     &trans     &trans     &trans         &kp C_MUTE &trans     &trans     &trans     &trans     &out OUT_TOG
+        //│          │          │          │          │          │PROFILE 2 │   │  MUTE    │          │          │          │          │  OUT_TOG
+            &trans     &trans     &trans     &trans     &trans   &bt BT_SEL 2   &kp C_MUTE   &trans     &trans     &trans     &trans   &out OUT_TOG
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │          │          │          │   │          │          │          │
                                              &trans     &trans     &trans         &trans     &trans     &trans
