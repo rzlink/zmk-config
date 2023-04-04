@@ -57,7 +57,7 @@
 		qwerty_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│  `~      │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │ \|
+	//│  `~      │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │  \|
 	    &kp GRAVE  &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y     &kp U       &kp I      &kp O      &kp P      &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ TAB      │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ;:      │  '"
@@ -75,16 +75,16 @@
 		lower_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│          │  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │
-	    &trans     &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &trans
+	//│          │  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │  -
+	    &trans     &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│          │  !       │  @       │  #       │  $       │  %       │   │  ^       │  &       │  *       │  (       │  )       │
-	    &trans     &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS &kp KP_MULTIPLY &kp LPAR  &kp RPAR   &trans
+	//│          │  !       │  @       │  #       │  $       │  %       │   │  ^       │  &       │  *       │  (       │  )       │  _
+	    &trans     &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS &kp KP_MULTIPLY &kp LPAR  &kp RPAR   &kp UNDER
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │          │  +       │  -       │  {       │  [       │   │  ]       │  }       │  =       │  _       │          │
-	   &trans      &trans     &kp PLUS   &kp MINUS  &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC &kp EQUAL    &kp UNDER  &trans     &trans
+	//│          │          │          │          │  {       │  [       │   │  ]       │  }       │  =       │  +       │
+	   &trans      &trans     &trans     &trans     &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC   &kp EQUAL   &kp PLUS  &none      &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │          │  FUNC    │   │          │  ALT     │          │
+	//                                 │  LGUI    │          │  FUNC    │   │  ENT     │  ALT     │  BKSP    │
 					     &trans     &trans     &mo FUNC       &trans     &kp RALT   &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
@@ -117,8 +117,8 @@
 	//│          │          │          │          │          │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
 	    &trans     &trans     &trans     &trans     &trans     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │          │          │          │          │          │   │  HOME    │  END     │          │          │          │
-	    &trans     &trans     &trans     &trans     &trans     &trans         &kp HOME   &kp END    &trans     &trans     &trans     &trans
+	//│          │          │          │          │          │          │   │  HOME    │  END     │  PAGE UP │ PAGE DOWN│          │
+	    &trans     &trans     &trans     &trans     &trans     &trans         &kp HOME   &kp END    &kp PG_UP  &kp PG_DN  &trans     &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          │          │   │          │          │          │
 					     &trans     &trans     &trans         &trans     &trans    &trans
