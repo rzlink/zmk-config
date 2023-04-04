@@ -49,7 +49,7 @@
            &kp LSHFT   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &mt RALT GRAVE
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │  GUI     │  LWR/ESC │  NAV/SPC │   │  ENT     │  RAISE   │  BKSP    │
-                                           &kp LGUI  &lt LOWER ESC &lt NAV SPACE  &kp RET    &mo RAISE  &kp BSPC
+                                           &kp LGUI  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &kp BSPC
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
                         >;
                 };
@@ -67,7 +67,7 @@
            &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &mt RALT GRAVE
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │  GUI     │  LWR/ESC │  NAV/SPC │   │  ENT     │  RAISE   │  BKSP    │
-                                           &kp LGUI  &lt LOWER ESC &lt NAV SPACE  &kp RET    &mo RAISE  &kp BSPC
+                                           &kp LGUI  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &kp BSPC
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
                         >;
                 };
@@ -84,7 +84,7 @@
         //│ SHFT     │  ~       │  +       │  -       │  {       │  [       │   │  ]       │  }       │  =       │  _       │          │
            &kp LSHFT   &kp TILDE  &kp PLUS   &kp MINUS  &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC &kp KP_EQUAL &kp UNDER  &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │  GUI     │          │  SPC     │   │          │          │  ALT     │
+        //                                 │  GUI     │          │  FUNC    │   │          │          │  ALT     │
                                              &kp LGUI   &trans     &mo FUNC       &trans     &trans     &kp RALT
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
                         >;
