@@ -117,8 +117,8 @@
 	//│          │          │          │          │          │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
 	    &trans     &trans     &trans     &trans     &trans     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │          │          │          │          │          │   │          │          │          │          │          │
-	    &trans     &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans     &trans
+	//│          │          │          │          │          │          │   │  HOME    │  END     │          │          │          │
+	    &trans     &trans     &trans     &trans     &trans     &trans         &kp HOME   &kp END    &trans     &trans     &trans     &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          │          │   │          │          │          │
 					     &trans     &trans     &trans         &trans     &trans    &trans
