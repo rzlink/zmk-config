@@ -93,14 +93,14 @@
 		raise_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│          │          │          │          │          │          │   │  INS     │          │          │          │          │  PRINT
-	    &trans     &trans     &trans     &trans     &trans     &trans         &kp INS    &trans     &trans     &trans     &trans     &kp PRINTSCREEN
+	//│          │  F12     │  F7      │  F8      │  F9      │  PRINT   │   │  INS     │          │          │          │          │
+	    &trans     &trans     &trans     &trans     &trans     &kp PSCRN      &kp INS    &trans     &trans     &trans     &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│          │          │          │          │          │          │   │  DEL     │          │          │          │          │  BREAK
-	    &trans     &trans     &trans     &trans     &trans     &trans         &kp DEL    &trans     &trans     &trans     &trans     &kp PAUSE_BREAK
+	//│          │  F11     │  F4      │  F5      │  F6      │  SCRLK   │   │  DEL     │          │          │          │          │
+	    &trans     &trans     &trans     &trans     &trans     &kp SLCK       &kp DEL    &trans     &trans     &trans     &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │          │          │          │          │          │   │          │          │          │          │          │
-	    &trans     &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans     &trans
+	//│          │  F10     │  F1      │  F2      │  F3      │  BREAK   │   │ CTRL+LEFT│CTRL+RIGHT│          │          │          │
+	    &trans     &trans     &trans     &trans     &trans &kp PAUSE_BREAK &kp LC(LEFT) &kp LC(RIGHT) &trans   &trans     &trans     &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │  ALT     │          │   │          │          │          │
 					     &trans     &kp LALT   &trans         &trans     &trans     &trans
