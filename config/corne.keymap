@@ -48,7 +48,7 @@
 	//│          │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │
 	   &none       &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  GUI     │  LWR/ESC │  NAV/SPC │   │  ENT     │  RAISE   │  BKSP    │
+	//                                 │  GUI     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │  BKSP    │
 					   &kp LGUI  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &kp BSPC
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
@@ -60,14 +60,14 @@
 	//│  `~      │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │  \ |
 	    &kp GRAVE  &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│ TAB      │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ; :     │  ' "
-	   &kp TAB     &kp A      HRML(S,        D,         F)     &kp G          &kp H      HRMR(J,        K,         L)     &kp SEMI   &kp SQT
+	//│ CTRL/TAB │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ; :     │  ' "
+	 &mt LCTRL TAB &kp A      HRML(S,        D,         F)     &kp G          &kp H      HRMR(J,        K,         L)     &kp SEMI   &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │
-	   &none       &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &none
+	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
+	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  GUI     │  LWR/ESC │  NAV/SPC │   │  ENT     │  RAISE   │  BKSP    │
-					   &kp LGUI  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &kp BSPC
+	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
+					   &kp LALT  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &mt ALT BSPC
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -82,9 +82,9 @@
 	    &trans     &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS &kp KP_MULTIPLY &kp LPAR  &kp RPAR   &kp UNDER
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│          │          │          │          │  {       │  [       │   │  ]       │  }       │  =       │  +       │
-	   &trans      &trans     &trans     &trans     &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC   &kp EQUAL   &kp PLUS  &none      &none
+	   &trans      &trans     &trans     &trans     &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC   &kp EQUAL   &kp PLUS  &none      &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  LGUI    │          │  FUNC    │   │  ENT     │  ALT     │  BKSP    │
+	//                                 │          │          │  FUNC    │   │  ENT     │  ALT     │  BKSP    │
 					     &trans     &trans     &mo FUNC       &trans     &kp RALT   &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
@@ -102,8 +102,8 @@
 	//│          │  F10     │  F1      │  F2      │  F3      │  BREAK   │   │ CTRL+LEFT│CTRL+RIGHT│          │          │          │
 	    &trans     &trans     &trans     &trans     &trans &kp PAUSE_BREAK &kp LC(LEFT) &kp LC(RIGHT) &trans   &trans     &trans     &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │  ALT     │          │   │          │          │          │
-					     &trans     &kp LALT   &trans         &trans     &trans     &trans
+	//                                 │          │          │          │   │          │          │          │
+					     &trans     &trans     &trans         &trans     &trans     &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
