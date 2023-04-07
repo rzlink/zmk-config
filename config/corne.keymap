@@ -42,14 +42,14 @@
 	//│  `~      │  Q       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  ; :     │  \ |
 	    &kp GRAVE  &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp SEMI   &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│ TAB      │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  ' "
-	    &kp TAB    &kp A      HRML(R,        S,      T)        &kp G          &kp M      HRMR(N,        E,         I)     &kp O      &kp SQT
+	//│ CTRL/TAB │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  ' "
+	 &mt LCTL TAB  &kp A      HRML(R,        S,      T)        &kp G          &kp M      HRMR(N,        E,         I)     &kp O      &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │
-	   &none       &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &none
+	//│  SHIFT   │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  GUI
+	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  GUI     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │  BKSP    │
-					   &kp LGUI  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &kp BSPC
+	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │  BKSP    │
+					   &kp LALT  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &mt LALT BSPC
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -64,7 +64,7 @@
 	 &mt LCTRL TAB &kp A      HRML(S,        D,         F)     &kp G          &kp H      HRMR(J,        K,         L)     &kp SEMI   &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
-	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RGUI
+	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
 					   &kp LALT  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &mt LALT BSPC
