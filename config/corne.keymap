@@ -19,7 +19,7 @@
 #define RCTL_K    &ht RCTRL K
 #define RALT_L    &ht RALT L
 
-// for colemmak layout
+// for colemak layout
 #define LALT_R    &ht LALT R
 #define LCTL_S    &ht LCTRL S
 #define LSHIFT_T  &ht LSHIFT T
@@ -29,7 +29,8 @@
 #define RALT_I    &ht RALT I
 
 // layers
-#define QWERT 1
+#define QWERT 0
+#define COLEM 1
 #define LOWER 2
 #define RAISE 3
 #define NAV   4
@@ -52,16 +53,10 @@
     combos {
 	compatible = "zmk,combos";
 
-	combo_lpar {
+	combo_escape {
 	    timeout-ms = <50>;
-	    bindings = <&kp LPAR>;
-	    key-positions = <4 3>;
-	};
-
-	combo_rpar {
-	    timeout-ms = <50>;
-	    bindings = <&kp RPAR>;
-	    key-positions = <7 8>;
+	    bindings = <&kp ESCAPE>;
+	    key-positions = <19 20>; // KP: JK
 	};
     };
 
@@ -156,11 +151,11 @@
 		navigation_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│          │          │          │          │          │          │   │          │          │          │          │          │
-	    &trans     &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans     &trans
+	//│          │          │          │  UP      │          │          │   │          │          │          │          │          │
+	    &trans     &trans     &trans     &kp UP     &trans     &trans         &trans     &trans     &trans     &trans     &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│          │          │          │          │          │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
-	    &trans     &trans     &trans     &trans     &trans     &trans         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans     &trans
+	//│          │          │  LEFT    │  DOWN    │  RIGHT   │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
+	    &trans     &trans     &kp LEFT   &kp DOWN   &kp RIGHT  &trans         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│          │          │          │          │          │          │   │  HOME    │  END     │  PAGE UP │ PAGE DOWN│          │
 	    &trans     &trans     &trans     &trans     &trans     &trans         &kp HOME   &kp END    &kp PG_UP  &kp PG_DN  &trans     &trans
@@ -181,7 +176,7 @@
 	    &trans     &trans     &trans     &trans     &trans   &bt BT_SEL 1   &kp C_VOL_DN &trans     &trans     &trans     &trans   &kp C_BRI_DEC
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│ LAYOUT   │          │          │          │          │PROFILE 2 │   │  MUTE    │          │          │          │          │  OUT_TOG
-	    &tog QWERT &trans     &trans     &trans     &trans   &bt BT_SEL 2   &kp C_MUTE   &trans     &trans     &trans     &trans   &out OUT_TOG
+	    &tog COLEM &trans     &trans     &trans     &trans   &bt BT_SEL 2   &kp C_MUTE   &trans     &trans     &trans     &trans   &out OUT_TOG
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          │          │   │          │          │          │
 					     &trans     &trans     &trans         &trans     &trans     &trans
