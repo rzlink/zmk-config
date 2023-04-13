@@ -11,31 +11,45 @@
 
 // Home row mods macro
 // for qwerty layout
-#define LALT_S   &ht LALT S
-#define LCTL_D   &ht LCTRL D
-#define LSHIFT_F &ht LSHIFT F
+#define LALT_S    &ht LALT S
+#define LCTL_D    &ht LCTRL D
+#define LSHIFT_F  &ht LSHIFT F
 
-#define RSHIFT_J &ht RSHIFT J
-#define RCTL_K   &ht RCTRL K
-#define RALT_L   &ht RALT L
+#define RSHIFT_J  &ht RSHIFT J
+#define RCTL_K    &ht RCTRL K
+#define RALT_L    &ht RALT L
 
 // for colemmak layout
-#define LALT_R   &ht LALT R
-#define LCTL_S   &ht LCTRL S
-#define LSHIFT_T &ht LSHIFT T
+#define LALT_R    &ht LALT R
+#define LCTL_S    &ht LCTRL S
+#define LSHIFT_T  &ht LSHIFT T
 
-#define RSHIFT_N &ht RSHIFT N
-#define RCTL_E   &ht RCTRL E
-#define RALT_I   &ht RALT I
+#define RSHIFT_N  &ht RSHIFT N
+#define RCTL_E    &ht RCTRL E
+#define RALT_I    &ht RALT I
 
+// layers
 #define QWERT 1
 #define LOWER 2
 #define RAISE 3
 #define NAV   4
 #define FUNC  5
 
+// Layer-Taps
+#define LWR_ESC   &lt LOWER ESC
+#define NAV_SPC   &lt NAV SPACE
+#define NAV_ENT   &lt NAV RET
+
+// Mod-Taps
+#define LALT_BKSP &mt LALT BSPC
+#define LCTRL_TAB &mt LCTRL TAB
+
+
+#define LCTRL_LEFT  &kp LC(LEFT)
+#define LCTRL_RIGHT &kp LC(RIGHT)
+
 / {
-    behaviors {
+    Behaviors {
 	ht: hold_tap {
 	    label = "hold_tap";
 	    compatible = "zmk,behavior-hold-tap";
@@ -58,13 +72,13 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ; :     │  ' "
-	 &mt LCTRL TAB &kp A      LALT_S     LCTL_D     LSHIFT_F   &kp G          &kp H      RSHIFT_J   RCTL_K     RALT_L     &kp SEMI   &kp SQT
+	    LCTRL_TAB  &kp A      LALT_S     LCTL_D     LSHIFT_F   &kp G          &kp H      RSHIFT_J   RCTL_K     RALT_L     &kp SEMI   &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
-					   &kp LALT  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &mt LALT BSPC
+					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  LALT_BKSP
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -76,13 +90,13 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp SEMI   &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  ' "
-	 &mt LCTL TAB  &kp A      LALT_R     LCTL_S     LSHIFT_T   &kp G          &kp M      RSHIFT_N   RCTL_E     RALT_I     &kp O      &kp SQT
+	    LCTRL_TAB  &kp A      LALT_R     LCTL_S     LSHIFT_T   &kp G          &kp M      RSHIFT_N   RCTL_E     RALT_I     &kp O      &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHIFT   │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │  BKSP    │
-					   &kp LALT  &lt LOWER ESC &lt NAV SPACE &lt NAV RET &mo RAISE  &mt LALT BSPC
+	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
+					   &kp LALT      LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  LALT_BKSP
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -97,7 +111,7 @@
 	    &trans     &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS &kp KP_MULTIPLY &kp LPAR  &kp RPAR   &kp UNDER
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│          │          │          │          │  {       │  [       │   │  ]       │  }       │  =       │  +       │
-	   &trans      &trans     &trans     &trans     &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC   &kp EQUAL   &kp PLUS  &none      &trans
+	    &trans     &trans     &trans     &trans     &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC   &kp EQUAL   &kp PLUS  &none      &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          │  FUNC    │   │  ENT     │  ALT     │  BKSP    │
 					     &trans     &trans     &mo FUNC       &trans     &kp RALT   &trans
@@ -115,7 +129,7 @@
 	    &trans     &trans     &trans     &trans     &trans     &kp SLCK       &kp DEL    &trans     &trans     &trans     &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│          │  F10     │  F1      │  F2      │  F3      │  BREAK   │   │ CTRL+LEFT│CTRL+RIGHT│          │          │          │
-	    &trans     &trans     &trans     &trans     &trans &kp PAUSE_BREAK &kp LC(LEFT) &kp LC(RIGHT) &trans   &trans     &trans     &trans
+	    &trans     &trans     &trans     &trans     &trans &kp PAUSE_BREAK   LCTRL_LEFT LCTRL_RIGHT &trans   &trans     &trans     &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          │          │   │          │          │          │
 					     &trans     &trans     &trans         &trans     &trans     &trans
@@ -130,7 +144,7 @@
 	    &trans     &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│          │          │          │          │          │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
-	    &trans     &trans     &trans     &trans     &trans     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &trans     &trans
+	    &trans     &trans     &trans     &trans     &trans     &trans         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans     &trans
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│          │          │          │          │          │          │   │  HOME    │  END     │  PAGE UP │ PAGE DOWN│          │
 	    &trans     &trans     &trans     &trans     &trans     &trans         &kp HOME   &kp END    &kp PG_UP  &kp PG_DN  &trans     &trans
