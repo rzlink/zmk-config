@@ -10,8 +10,23 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // Home row mods macro
-#define HRML(k2,k3,k4) &ht LALT k2 &ht LCTRL k3  &ht LSHIFT k4
-#define HRMR(k1,k2,k3) &ht RSHIFT k1  &ht RCTRL k2  &ht RALT k3
+// for qwerty layout
+#define LALT_S   &ht LALT S
+#define LCTL_D   &ht LCTRL D
+#define LSHIFT_F &ht LSHIFT F
+
+#define RSHIFT_J &ht RSHIFT J
+#define RCTL_K   &ht RCTRL K
+#define RALT_L   &ht RALT L
+
+// for colemmak layout
+#define LALT_R   &ht LALT R
+#define LCTL_S   &ht LCTRL S
+#define LSHIFT_T &ht LSHIFT T
+
+#define RSHIFT_N &ht RSHIFT N
+#define RCTL_E   &ht RCTRL E
+#define RALT_I   &ht RALT I
 
 #define QWERT 1
 #define LOWER 2
@@ -43,7 +58,7 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ; :     │  ' "
-	 &mt LCTRL TAB &kp A      HRML(S,        D,         F)     &kp G          &kp H      HRMR(J,        K,         L)     &kp SEMI   &kp SQT
+	 &mt LCTRL TAB &kp A      LALT_S     LCTL_D     LSHIFT_F   &kp G          &kp H      RSHIFT_J   RCTL_K     RALT_L     &kp SEMI   &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
@@ -61,7 +76,7 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp SEMI   &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  ' "
-	 &mt LCTL TAB  &kp A      HRML(R,        S,      T)        &kp G          &kp M      HRMR(N,        E,         I)     &kp O      &kp SQT
+	 &mt LCTL TAB  &kp A      LALT_R     LCTL_S     LSHIFT_T   &kp G          &kp M      RSHIFT_N   RCTL_E     RALT_I     &kp O      &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHIFT   │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
