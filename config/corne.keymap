@@ -66,6 +66,12 @@
 	    key-positions = <19 20>; // KP: JK
 	};
 
+        combo_input {
+	    timeout-ms = <30>;
+	    bindings = <&kp LG(SPACE)>;
+	    key-positions = <19 20 21>; // KP: JKL
+	};
+
     };
 
     Behaviors {
@@ -114,7 +120,7 @@
 	//│  SHIFT   │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
+	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │  BKSP    │
 					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  &kp BACKSPACE
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
