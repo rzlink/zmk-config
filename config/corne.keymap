@@ -96,8 +96,8 @@
 	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
-					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  LALT_BKSP
+	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ BKSP     │
+					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  &kp BACKSPACE
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -115,7 +115,7 @@
 	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ ALT/BKSP │
-					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  LALT_BKSP
+					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  &kp BACKSPACE
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
