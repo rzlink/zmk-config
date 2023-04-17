@@ -17,6 +17,7 @@
 #define NAV    4
 #define WINSYS 5
 #define FUNC   6
+#define EMPTY  7
 
 // Home row mods macro
 // for qwerty layout
@@ -52,19 +53,7 @@
 
 / {
     #include "include/combos.dtsi"
-
-    Behaviors {
-	ht: hold_tap {
-	    label = "hold_tap";
-	    compatible = "zmk,behavior-hold-tap";
-	    #binding-cells = <2>;
-	    flavor = "tap-preferred";
-	    tapping-term-ms = <220>;
-	    quick-tap-ms = <150>;
-	    global-quick-tap;
-	    bindings = <&kp>, <&kp>;
-	};
-    };
+    #include "include/behaviors.dtsi"
 
     keymap {
 	compatible = "zmk,keymap";

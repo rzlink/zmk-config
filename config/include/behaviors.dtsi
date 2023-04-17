@@ -1,0 +1,14 @@
+#define TAPPING_TERM 200
+#define QUICK_TAP_TERM 150
+
+
+ht: hold_tap {
+    label = "hold_tap";
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <TAPPING_TERM>;
+    quick-tap-ms = <QUICK_TAP_TERM>;
+    global-quick-tap;
+    bindings = <&kp>, <&kp>;
+};
