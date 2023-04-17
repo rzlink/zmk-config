@@ -51,28 +51,7 @@
 #define LCTRL_RIGHT &kp LC(RIGHT)
 
 / {
-    combos {
-	compatible = "zmk,combos";
-
-	combo_escape {
-	    timeout-ms = <30>;
-	    bindings = <&kp ESCAPE>;
-	    key-positions = <15 16>; // KP: DF
-	};
-
-	combo_enter {
-	    timeout-ms = <30>;
-	    bindings = <&kp RETURN>;
-	    key-positions = <19 20>; // KP: JK
-	};
-
-        combo_input {
-	    timeout-ms = <30>;
-	    bindings = <&kp LG(SPACE)>;
-	    key-positions = <19 20 21>; // KP: JKL
-	};
-
-    };
+    #include "include/combos.dtsi"
 
     Behaviors {
 	ht: hold_tap {
@@ -138,7 +117,7 @@
 	//│          │          │          │          │  {       │  [       │   │  ]       │  }       │  =       │  +       │
 	    &trans     &trans     &trans     &trans     &kp LBRC   &kp LBKT       &kp RBKT   &kp RBRC   &kp EQUAL  &kp PLUS   &none      &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │          │  FUNC    │   │  ENT     │  ALT     │  BKSP    │
+	//                                 │          │          │  FUNC    │   │  ENT     │  ALT     │
 					     &trans     &trans     &mo FUNC       &trans     &kp RALT   &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
