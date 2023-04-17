@@ -12,45 +12,45 @@
 // layers
 #define QWERT  0
 #define COLEM  1
-#define LOWER  2
-#define RAISE  3
+#define SYM  2
+#define FUN  3
 #define NAV    4
 #define WINSYS 5
-#define FUNC   6
+#define MAINT   6
 #define EMPTY  7
 
 // Home row mods macro
 // for qwerty layout
-#define LALT_S      &ht LALT S
-#define LCTL_D      &ht LCTRL D
-#define LSHIFT_F    &ht LSHIFT F
+#define LALT_S        &ht LALT   S
+#define LCTL_D        &ht LCTRL  D
+#define LSHIFT_F      &ht LSHIFT F
 
-#define RSHIFT_J    &ht RSHIFT J
-#define RCTL_K      &ht RCTRL K
-#define RALT_L      &ht RALT L
+#define RSHIFT_J      &ht RSHIFT J
+#define RCTL_K        &ht RCTRL  K
+#define RALT_L        &ht RALT   L
 
 // for colemak layout
-#define LALT_R      &ht LALT R
-#define LCTL_S      &ht LCTRL S
-#define LSHIFT_T    &ht LSHIFT T
+#define LALT_R        &ht LALT   R
+#define LCTL_S        &ht LCTRL  S
+#define LSHIFT_T      &ht LSHIFT T
 
-#define RSHIFT_N    &ht RSHIFT N
-#define RCTL_E      &ht RCTRL E
-#define RALT_I      &ht RALT I
+#define RSHIFT_N      &ht RSHIFT N
+#define RCTL_E        &ht RCTRL  E
+#define RALT_I        &ht RALT   I
 
 // Layer-Taps
-#define LWR_ESC     &lt LOWER ESC
-#define NAV_SPC     &lt NAV SPACE
-#define NAV_ENT     &lt NAV RET
+#define SYM_ESC       &lt SYM    ESC
+#define NAV_SPC       &lt NAV    SPACE
+#define NAV_ENT       &lt NAV    RET
 
 // Mod-Taps
-#define LALT_BKSP   &mt LALT BSPC
-#define LCTRL_TAB   &mt LCTRL TAB
+#define LALT_BKSP     &mt LALT   BSPC
+#define LCTRL_TAB     &mt LCTRL  TAB
 
 // function key combos
-#define LCTRL_LEFT  &kp LC(LEFT)
-#define LCTRL_RIGHT &kp LC(RIGHT)
-#define CTRL_ALT_DEL &kp LC(LA(DEL))
+#define LCTRL_LEFT    &kp LC(LEFT)
+#define LCTRL_RIGHT   &kp LC(RIGHT)
+#define CTRL_ALT_DEL  &kp LC(LA(DEL))
 
 / {
     #include "include/combos.dtsi"
@@ -71,8 +71,8 @@
 	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │ BKSP     │
-					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  &kp BACKSPACE
+	//                                 │  ALT     │  SYM/ESC │  NAV/SPC │   │  NAV/ENT │  FUN     │ BKSP     │
+					     &kp LALT    SYM_ESC    NAV_SPC        NAV_ENT   &mo FUN    &kp BACKSPACE
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -89,13 +89,13 @@
 	//│  SHIFT   │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ALT     │  LWR/ESC │  NAV/SPC │   │  NAV/ENT │  RAISE   │  BKSP    │
-					     &kp LALT    LWR_ESC    NAV_SPC        NAV_ENT   &mo RAISE  &kp BACKSPACE
+	//                                 │  ALT     │  SYM/ESC │  NAV/SPC │   │  NAV/ENT │  FUN     │  BKSP    │
+					     &kp LALT    SYM_ESC    NAV_SPC        NAV_ENT   &mo FUN    &kp BACKSPACE
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
 
-		lower_layer {
+		symbol_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
 	//│          │  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │  -
@@ -107,13 +107,13 @@
 	//│          │          │          │          │  {       │  }       │   │  [       │  ]       │  =       │  +       │
 	    &trans     &trans     &trans     &trans     &kp LBRC   &kp RBRC       &kp LBKT   &kp RBKT   &kp EQUAL  &kp PLUS   &none      &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │          │  FUNC    │   │  ENT     │  ALT     │
-					     &trans     &trans     &mo FUNC       &trans     &kp RALT   &trans
+	//                                 │          │          │  MAINT   │   │  ENT     │  ALT     │
+					     &trans     &trans     &mo MAINT      &trans     &kp RALT   &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
 
-		raise_layer {
+		function_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
 	//│          │  F12     │  F7      │  F8      │  F9      │  PRINT   │   │          │          │          │          │          │
@@ -167,7 +167,7 @@
 			>;
 		};
 
-		function_layer {
+		maintenance_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
 	//│ CLEAR BT │          │          │          │PROFILE 3 │PROFILE 0 │   │  VOL+    │          │          │          │          │  BRIGHT+
