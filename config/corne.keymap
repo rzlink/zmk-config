@@ -21,6 +21,7 @@
 
 // Home row mods macro
 // for qwerty layout
+#define LGUI_A        &ht LGUI   A
 #define LALT_S        &ht LALT   S
 #define LCTL_D        &ht LCTRL  D
 #define LSHIFT_F      &ht LSHIFT F
@@ -28,6 +29,7 @@
 #define RSHIFT_J      &ht RSHIFT J
 #define RCTL_K        &ht RCTRL  K
 #define RALT_L        &ht RALT   L
+#define RGUI_SEMI     &ht RGUI   SEMI
 
 // for colemak layout
 #define LALT_R        &ht LALT   R
@@ -37,6 +39,7 @@
 #define RSHIFT_N      &ht RSHIFT N
 #define RCTL_E        &ht RCTRL  E
 #define RALT_I        &ht RALT   I
+#define RGUI_O        &ht RGUI   O
 
 // Layer-Taps
 #define SYM_ESC       &lt SYM    ESC
@@ -66,7 +69,7 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ; :     │  ' "
-	    LCTRL_TAB  &kp A      LALT_S     LCTL_D     LSHIFT_F   &kp G          &kp H      RSHIFT_J   RCTL_K     RALT_L     &kp SEMI   &kp SQT
+	    LCTRL_TAB  LGUI_A     LALT_S     LCTL_D     LSHIFT_F   &kp G          &kp H      RSHIFT_J   RCTL_K     RALT_L     RGUI_SEMI  &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
@@ -84,7 +87,7 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp SEMI   &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  ' "
-	    LCTRL_TAB  &kp A      LALT_R     LCTL_S     LSHIFT_T   &kp G          &kp M      RSHIFT_N   RCTL_E     RALT_I     &kp O      &kp SQT
+	    LCTRL_TAB  LGUI_A     LALT_R     LCTL_S     LSHIFT_T   &kp G          &kp M      RSHIFT_N   RCTL_E     RALT_I     RGUI_O     &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│  SHIFT   │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │  , <     │  . >     │  / ?     │  GUI
 	   &kp LSHIFT  &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
