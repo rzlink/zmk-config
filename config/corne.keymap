@@ -176,8 +176,8 @@
 	//│ CLEAR BT │          │          │          │PROFILE 3 │PROFILE 0 │   │  VOL+    │          │          │          │          │  BRIGHT+
 	    &bt BT_CLR &none      &none      &none   &bt BT_SEL 3 &bt BT_SEL 0  &kp C_VOL_UP &none      &none      &none      &none    &kp C_BRI_UP
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│ REBOOT   │          │          │          │PROFILE 4 │PROFILE 1 │   │  VOL-    │          │          │          │          │  BRIGHT-
-	  CTRL_ALT_DEL &none      &none      &none   &bt BT_SEL 4 &bt BT_SEL 1  &kp C_VOL_DN &none      &none      &none      &none    &kp C_BRI_DEC
+	//│ EMPTY    │          │          │          │PROFILE 4 │PROFILE 1 │   │  VOL-    │          │          │          │          │  BRIGHT-
+	    &tog EMPTY &none      &none      &none   &bt BT_SEL 4 &bt BT_SEL 1  &kp C_VOL_DN &none      &none      &none      &none    &kp C_BRI_DEC
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│ LAYOUT   │          │          │          │          │PROFILE 2 │   │  MUTE    │          │          │          │          │  OUT_TOG
 	    &tog COLEM &none      &none      &none      &none     &bt BT_SEL 2  &kp C_MUTE   &none      &none      &none      &none    &out OUT_TOG
