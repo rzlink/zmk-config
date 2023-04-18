@@ -10,14 +10,14 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // layers
-#define QWERT  0
-#define COLEM  1
-#define SYM  2
-#define FUN  3
-#define NAV    4
-#define WINSYS 5
+#define QWERT   0
+#define COLEM   1
+#define SYM     2
+#define FUN     3
+#define NAV     4
+#define WINSYS  5
 #define MAINT   6
-#define EMPTY  7
+#define EMPTY   7
 
 // Home row mods macro
 // for qwerty layout
@@ -125,8 +125,8 @@
 	//│          │  F10     │  F1      │  F2      │  F3      │  BREAK   │   │          │          │          │          │          │
 	    &trans     &kp F10    &kp F1     &kp F2     &kp F3  &kp PAUSE_BREAK   &trans     &trans     &trans     &trans     &trans     &trans
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │          │          │   │          │          │          │
-					     &trans     &trans     &trans         &trans     &trans     &trans
+	//                                 │  CTRL    │  ALT     │  DEL     │   │          ┼──────────┼          │          │
+					     &kp LCTL   &kp LALT   &kp DEL        &trans     &trans     &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
