@@ -21,8 +21,9 @@ combos {
 
     compatible = "zmk,combos";
 
-    COMBO(escape,     COMBO_TERM, 15 16,    &kp ESCAPE,    QWERT COLEM)
-    COMBO(enter,      COMBO_TERM, 19 20,    &kp RETURN,    QWERT COLEM)
-    COMBO(input,      COMBO_TERM, 19 20 21, &kp LG(SPACE), QWERT COLEM)
-    COMBO(tog_empty,  COMBO_TERM, 19 20 21, &tog EMPTY,    EMPTY)
+    COMBO(escape,        COMBO_TERM, 15 16,    &kp ESCAPE,    QWERT COLEM)
+    COMBO(enter,         COMBO_TERM, 19 20,    &kp RETURN,    QWERT COLEM)
+    COMBO(input,         COMBO_TERM, 19 20 21, &kp LG(SPACE), QWERT COLEM)
+    COMBO(tog_empty,     COMBO_TERM, 19 20 21, &tog EMPTY,    EMPTY)
+    COMBO(ubuntu_reboot, COMBO_TERM, 19 20 21, &ubuntu_reboot, MAINT)
 };
