@@ -147,8 +147,8 @@
 	//│          │          │          │          │          │  LEFT    │   │  DOWN    │          │          │          │          │
 	    &trans     &none      &none      &none      &none      &kp LEFT       &kp DOWN   &none      &none      &none      &none      &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │          ┼──────────┼   ┼──────────┼          │          │
-					     &trans     &trans     &none          &none      &trans     &trans
+	//                                 │          │          │  SHIFT   │   │  SHIFT   │          │          │
+					     &trans     &trans     &kp LSHFT      &kp RSHFT  &trans     &trans
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
