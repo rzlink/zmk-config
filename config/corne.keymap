@@ -138,14 +138,14 @@
 		navigation_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│          │          │          │  UP      │          │          │   │  HOME    │ PAGE DOWN│  PAGE UP │  END     │          │
-	    &trans     &none      &none      &kp UP     &none      &none          &kp HOME  &kp PG_DN   &kp PG_UP  &kp END    &none      &none 
+	//│          │          │          │  END     │          │          │   │  HOME    │ PAGE DOWN│  PAGE UP │  END     │  UP      │
+	    &trans     &none      &none      &kp END    &none      &none          &kp HOME  &kp PG_DN   &kp PG_UP  &kp END    &kp UP     &none 
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│          │          │  LEFT    │  DOWN    │  RIGHT   │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
-	    &trans     &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none      &none 
+	//│          │  HOME    │          │          │  RIGHT   │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
+	    &trans     &kp HOME   &none      &none      &kp RIGHT  &none          &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none      &none 
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │          │          │          │          │          │   │  INS     │  DEL     │          │          │          │
-	    &trans     &none      &none      &none      &none      &none          &kp INS    &kp DEL    &none      &none      &none      &none 
+	//│          │          │          │          │          │  LEFT    │   │  DOWN    │          │          │          │          │
+	    &trans     &none      &none      &none      &none      &kp LEFT       &kp DOWN   &none      &none      &none      &none      &none 
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          ┼──────────┼   ┼──────────┼          │          │
 					     &trans     &trans     &none          &none      &trans     &trans
