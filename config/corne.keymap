@@ -196,17 +196,17 @@
 		games_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│          │          │          │          │          │          │   │          │          │  UP      │          │          │  ESC
-	    &none      &none      &none      &none      &none      &none          &none      &none      &kp UP     &none      &none      &kp ESC
+	//│          │          │          │  UP      │          │          │   │          │          │          │          │          │
+	    &none      &none      &none      &kp UP     &none      &none          &none      &none      &none      &none      &none      &none
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│          │          │          │          │          │          │   │          │  LEFT    │  DOWN    │  RIGHT   │          │  CTRL
-	    &none      &none      &none      &none      &none      &none          &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none      &kp LCTRL
+	//│  CTRL    │          │  LEFT    │  DOWN    │  RIGHT   │          │   │          │          │          │          │          │
+	    &kp LCTRL  &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &none      &none      &none      &none      &none      &none
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│          │          │          │          │          │          │   │          │          │          │          │          │
-	    &none      &none      &none      &none      &none      &none          &none      &none      &none      &none      &none      &none
+	//│  QWERT   │          │          │          │          │          │   │          │          │          │          │          │
+	    &mo QWERT  &none      &none      &none      &none      &none          &none      &none      &none      &none      &none      &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │          │          │  QWERT   │   │  RET     │  SPACE   │  ESC     │
-					     &none      &none      &mo QWERT      &kp RET    &kp SPACE  &kp ESC
+	//                                 │  ESC     │  SPACE   │  ENT     │   │          │          │          │
+					     &kp ESC    &kp SPACE  &kp RET        &none      &none      &none
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
@@ -218,13 +218,13 @@
 	    &kp GRAVE  &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSLH
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
 	//│ CTRL/TAB │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ; :     │  ' "
-	    LCTRL_TAB  LGUI_A     LALT_S     LCTL_D     LSHIFT_F   &kp G          &kp H      RSHIFT_J   RCTL_K     RALT_L     RGUI_SEMI   &kp SQT
+	    LCTRL_TAB  &kp A      &kp S      &kp D      &kp F      &kp G          &kp H      &kp J      &kp K      &kp L      &kp SEMI   &kp SQT
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │  GUI
-	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp LGUI
+	//│  SHFT    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │  , <     │  . >     │  / ?     │
+	   &kp LSHFT   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ALT     │  SYM/ESC │  NAV/SPC │   │  NAV/ENT │  FUN     │  BKSP    │
-					     &kp LALT    SYM_ESC    NAV_SPC        NAV_ENT   &mo FUN    &kp BSPC
+	//                                 │  ALT     │  ESC     │  SPACE   │   │  ENT     │  DEL     │  BKSP    │
+					     &kp LALT   &kp ESC    &kp SPACE      &kp RET    &kp DEL    &kp BSPC
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
