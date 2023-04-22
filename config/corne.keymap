@@ -198,8 +198,8 @@
 	//│  ESC     │          │          │  UP      │          │          │   │          │          │  UP      │          │          │  ESC
 	    &kp ESC    &none      &none      &kp UP     &none      &none          &none      &none      &kp UP     &none      &none      &kp ESC
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│          │          │  LEFT    │  DOWN    │  RIGHT   │          │   │          │  LEFT    │  DOWN    │  RIGHT   │          │
-	    &none      &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none      &none
+	//│  CTRL    │          │  LEFT    │  DOWN    │  RIGHT   │          │   │          │  LEFT    │  DOWN    │  RIGHT   │          │  CTRL
+	    &kp LCTRL  &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none      &kp LCTRL
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
 	//│          │          │          │          │          │          │   │          │          │          │          │          │
 	    &none      &none      &none      &none      &none      &none          &none      &none      &none      &none      &none      &none
