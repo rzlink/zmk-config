@@ -17,8 +17,9 @@
 #define NAV     4
 #define WINSYS  5
 #define EMACS   6
-#define MAINT   7
-#define EMPTY   8
+#define GAMES   7
+#define MAINT   8
+#define EMPTY   9
 
 // Home row mods macro
 // for qwerty layout
@@ -130,7 +131,7 @@
 	//│  SHIFT   │  F10     │  F1      │  F2      │  F3      │  BREAK   │   │  INS     │  DEL     │          │          │          │
 	    &kp LSHIFT &kp F10    &kp F1     &kp F2     &kp F3  &kp PAUSE_BREAK   &kp INS    &kp DEL    &none      &none      &none      &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  CTRL    │  ALT     │  DEL     │   │          ┼──────────┼          │          │
+	//                                 │  CTRL    │  ALT     │  DEL     │   │          ┼──────────┼          │
 					     &kp LCTL   &kp LALT   &kp DEL        &none      &none      &none
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
@@ -191,16 +192,34 @@
 			>;
 		};
 
+		games_layer {
+			bindings = <
+	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+	//│  ESC     │          │          │  UP      │          │          │   │          │          │  UP      │          │          │  ESC
+	    &kp ESC    &none      &none      &kp UP     &none      &none          &none      &none      &kp UP     &none      &none      &kp ESC
+	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+	//│          │          │  LEFT    │  DOWN    │  RIGHT   │          │   │          │  LEFT    │  DOWN    │  RIGHT   │          │
+	    &none      &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none      &none
+	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
+	//│          │          │          │          │          │          │   │          │          │          │          │          │
+	    &none      &none      &none      &none      &none      &none          &none      &none      &none      &none      &none      &none
+	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
+	//                                 │  MAINT   │  SPACE   │  RET     │   │  RET     │  SPACE   │  MAINT   │
+					     &mo MAINT  &kp SPACE  &kp RET        &kp RET    &kp SPACE  &mo MAINT
+	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+			>;
+		};
+
 		maintenance_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
 	//│ CLEAR BT │          │          │          │PROFILE 3 │PROFILE 0 │   │  VOL+    │          │          │          │          │  BRIGHT+
 	    &bt BT_CLR &none      &none      &none   &bt BT_SEL 3 &bt BT_SEL 0  &kp C_VOL_UP &none      &none      &none      &none    &kp C_BRI_UP
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│ EMPTY    │          │          │          │PROFILE 4 │PROFILE 1 │   │  VOL-    │          │          │          │          │  BRIGHT-
-	    &tog EMPTY &none      &none      &none   &bt BT_SEL 4 &bt BT_SEL 1  &kp C_VOL_DN &none      &none      &none      &none    &kp C_BRI_DEC
+	//│  EMPTY   │  GAMES   │          │          │PROFILE 4 │PROFILE 1 │   │  VOL-    │          │          │          │          │  BRIGHT-
+	    &tog EMPTY &tog GAMES &none      &none   &bt BT_SEL 4 &bt BT_SEL 1  &kp C_VOL_DN &none      &none      &none      &none    &kp C_BRI_DEC
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│ LAYOUT   │          │          │          │          │PROFILE 2 │   │  MUTE    │          │          │          │          │  OUT_TOG
+	//│  COLEM   │          │          │          │          │PROFILE 2 │   │  MUTE    │          │          │          │          │  OUT_TOG
 	    &tog COLEM &none      &none      &none      &none     &bt BT_SEL 2  &kp C_MUTE   &none      &none      &none      &none    &out OUT_TOG
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │          │          │          │   │          │          │          │
