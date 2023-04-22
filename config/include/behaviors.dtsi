@@ -12,3 +12,13 @@ ht: hold_tap {
     global-quick-tap;
     bindings = <&kp>, <&kp>;
 };
+
+mo_sl: behavior_mo_sl {
+    label = "mo_sl";
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <TAPPING_TERM>;
+    quick-tap-ms = <QUICK_TAP_TERM>;
+    bindings = <&mo>, <&sl>;
+};
