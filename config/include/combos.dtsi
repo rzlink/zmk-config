@@ -23,7 +23,12 @@ combos {
 
     COMBO(escape,        COMBO_TERM, 15 16,    &kp ESCAPE,    BASE QWERT COLEM)
     COMBO(enter,         COMBO_TERM, 19 20,    &kp RETURN,    BASE QWERT COLEM GAMES)
+
+    COMBO(backslash,     COMBO_TERM, 15 28,    &kp BACKSLASH, BASE QWERT COLEM)
+    COMBO(slash,         COMBO_TERM, 20 31,    &kp SLASH,     BASE QWERT COLEM)
+
     COMBO(input,         COMBO_TERM, 19 20 21, &kp LG(SPACE), BASE QWERT COLEM)
+
     COMBO(tog_empty,     COMBO_TERM, 19 20 21, &tog EMPTY,    EMPTY)
     COMBO(tog_games,     COMBO_TERM, 19 20 21, &tog GAMES,    GAMES)
 };
