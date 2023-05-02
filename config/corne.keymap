@@ -54,9 +54,11 @@
 #define LCTRL_TAB     &mt LCTRL  TAB
 
 // function key combos
-#define LCTRL_LEFT    &kp LC(LEFT)
-#define LCTRL_RIGHT   &kp LC(RIGHT)
-#define CTRL_ALT_DEL  &kp LC(LA(DEL))
+#define FUN_COPY      &kp LC(C)
+#define FUN_PASTE     &kp LC(V)
+#define FUN_UNDO      &kp LC(Z)
+#define FUN_CUT       &kp LC(X)
+
 
 / {
     #include "include/macros.dtsi"
@@ -147,8 +149,8 @@
 	//│  CTRL    │  HOME    │          │          │  RIGHT   │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
 	    &kp LCTRL  &kp HOME   &none      &none      &kp RIGHT  &none          &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none      &none
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│  SHIFT   │          │          │          │          │  LEFT    │   │  DOWN    │          │          │          │          │
-	    &kp LSHIFT &none      &none      &none      &none      &kp LEFT       &kp DOWN   &none      &none      &none      &none      &none
+	//│  SHIFT   │  UNDO    │  CUT     │  COPY    │  PASTE   │  LEFT    │   │  DOWN    │          │          │          │          │
+	    &kp LSHIFT FUN_UNDO   FUN_CUT    FUN_COPY   FUN_PASTE  &kp LEFT       &kp DOWN   &none      &none      &none      &none      &none
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
 	//                                 │  CTRL    │  ALT     │  SHIFT   │   │  SHIFT   │  ALT     │  CTRL    │
 					     &kp LCTL   &kp LALT   &kp LSHFT      &kp RSHFT  &kp RALT   &kp RCTL
