@@ -198,17 +198,17 @@
 		games_layer {
 			bindings = <
 	//╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-	//│          │          │          │  UP      │          │          │   │          │          │          │          │          │
-	    &none      &none      &none      &kp UP     &none      &none          &none      &none      &none      &none      &none      &none
+	//│          │          │          │  UP      │          │          │   │          │          │  UP      │          │          │
+	    &none      &none      &none      &kp UP     &none      &none          &none      &none      &kp UP     &none      &none      &none
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-	//│  CTRL    │          │  LEFT    │  DOWN    │  RIGHT   │          │   │          │          │          │          │          │
-	    &kp LCTRL  &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &none      &none      &none      &none      &none      &none
+	//│  CTRL    │          │  LEFT    │  DOWN    │  RIGHT   │          │   │          │  LEFT    │  DOWN    │  RIGHT   │          │  CTRL
+	    &kp LCTRL  &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none          &none      &kp LEFT   &kp DOWN   &kp RIGHT  &none      &kp LCTRL
 	//├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-	//│  QWERT   │          │          │          │          │          │   │          │          │          │          │          │
-	    &mo QWERT  &none      &none      &none      &none      &none          &none      &none      &none      &none      &none      &none
+	//│  QWERT   │          │          │          │          │          │   │          │          │          │          │          │  QWERT
+	    &mo QWERT  &none      &none      &none      &none      &none          &none      &none      &none      &none      &none      &mo QWERT
 	//╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-	//                                 │  ESC     │  SPACE   │  ENT     │   │          │          │          │
-					     &kp ESC    &kp SPACE  &kp RET        &none      &none      &none
+	//                                 │  ESC     │  SPACE   │  ENT     │   │  ENT     │  SPACE   │  ESC     │
+					     &kp ESC    &kp SPACE  &kp RET        &kp RET    &kp SPACE  &kp ESC
 	//                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
 			>;
 		};
