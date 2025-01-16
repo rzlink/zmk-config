@@ -57,6 +57,10 @@
 #define FUN_UNDO      &kp LC(Z)
 #define FUN_CUT       &kp LC(X)
 
+// switch virtual desktop for windows os
+#define FUN_SCRN_L    &kp LG(LC(LEFT))
+#define FUN_SCRN_R    &kp LG(LC(RIGHT))
+
 
 / {
     #include "include/macros.dtsi"
@@ -141,14 +145,14 @@
         navigation_layer {
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-    //│  GUI     │          │          │  END     │          │          │   │  HOME    │ PAGE DOWN│  PAGE UP │  END     │  UP      │
-        &kp LGUI   &none      &none      &kp END    &none      &none          &kp HOME  &kp PG_DN   &kp PG_UP  &kp END    &kp UP     &none
+    //│  GUI     │          │          │  END     │          │ SCREEN_L │   │  HOME    │ PAGE DOWN│  PAGE UP │  END     │  UP      │
+        &kp LGUI   &none      &none      &kp END    &none      FUN_SCRN_L     &kp HOME  &kp PG_DN   &kp PG_UP  &kp END    &kp UP     &none
     //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-    //│  CTRL    │  HOME    │          │          │  RIGHT   │          │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
-        &kp LCTRL  &kp HOME   &none      &none      &kp RIGHT  &none          &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none      &none
+    //│  CTRL    │  HOME    │          │          │  RIGHT   │ SCREEN_R │   │  LEFT    │  DOWN    │  UP      │  RIGHT   │          │
+        &kp LCTRL  &kp HOME   &none      &none      &kp RIGHT  FUN_SCRN_R     &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none      &none
     //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
-    //│  SHIFT   │  UNDO    │  CUT     │  COPY    │  PASTE   │  LEFT    │   │  DOWN    │          │          │          │          │
-        &kp LSHIFT FUN_UNDO   FUN_CUT    FUN_COPY   FUN_PASTE  &kp LEFT       &kp DOWN   &none      &none      &none      &none      &none
+    //│  SHIFT   │          │          │          │          │  LEFT    │   │  DOWN    │          │          │          │          │
+        &kp LSHIFT &none      &none      &none      &none      &kp LEFT       &kp DOWN   &none      &none      &none      &none      &none
     //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
     //                                 │  CTRL    │  ALT     │  SHIFT   │   │  SHIFT   │  ALT     │  CTRL    │
                                          &kp LCTL   &kp LALT   &kp LSHFT      &kp RSHFT  &kp RALT   &kp RCTL
