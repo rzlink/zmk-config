@@ -33,7 +33,7 @@ This repository contains my personal ZMK firmware configuration for the Corne (C
 Standard QWERTY layout with home row modifiers
 - Left home row: GUI(A), Alt(S), Ctrl(D), Shift(F)
 - Right home row: Shift(J), Ctrl(K), Alt(L), GUI(;)
-- Layer access: Symbol(ESC), Navigation(Space/Enter), Function
+- Layer access: Symbol(ESC), Navigation(Space/Enter), Function(Tab)
 
 ```
 ╭─────────┬─────────┬─────────┬─────────┬─────────┬─────────╮   ╭─────────┬─────────┬─────────┬─────────┬─────────┬─────────╮
