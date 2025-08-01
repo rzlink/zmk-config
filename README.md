@@ -175,9 +175,15 @@ Disabled layer (all keys inactive)
 - **JKL**: Toggle between Empty and Games layers
 
 ### Custom Behaviors
-- **Hold-Tap**: Balanced hold-tap with 200ms tapping term
-- **Quick-Tap**: 150ms quick-tap for rapid repeated taps
-- **Prior-Idle**: 120ms requirement to prevent accidental holds
+- **Hold-Tap (Standard)**: Balanced hold-tap with 280ms tapping term for most modifiers
+- **Hold-Tap (Strict)**: Tap-preferred hold-tap with 300ms tapping term for shift keys to reduce false positives
+- **Quick-Tap**: 175ms quick-tap for rapid repeated taps
+- **Prior-Idle**: 150-200ms requirement to prevent accidental holds during fast typing
+
+#### Home Row Mod Timing
+The configuration uses two different hold-tap behaviors to optimize typing experience:
+- **Standard timing** for Ctrl, Alt, GUI modifiers (280ms tapping term)
+- **Strict timing** for Shift modifiers (300ms, tap-preferred) to prevent accidental "fi" instead of "I" issues
 
 ## Configuration Files
 
