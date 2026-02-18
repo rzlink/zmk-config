@@ -25,9 +25,9 @@
 #define LGUI_A        &ht LGUI   A
 #define LALT_S        &ht LALT   S
 #define LCTL_D        &ht LCTRL  D
-#define LSHIFT_F      &ht_shift_l LSHIFT F
+#define LSHIFT_F      &ht LSHIFT F
 
-#define RSHIFT_J      &ht_shift_r RSHIFT J
+#define RSHIFT_J      &ht RSHIFT J
 #define RCTL_K        &ht RCTRL  K
 #define RALT_L        &ht RALT   L
 #define RGUI_SEMI     &ht RGUI   SEMI
@@ -35,9 +35,9 @@
 // for colemak layout
 #define LALT_R        &ht LALT   R
 #define LCTL_S        &ht LCTRL  S
-#define LSHIFT_T      &ht_shift_l LSHIFT T
+#define LSHIFT_T      &ht LSHIFT T
 
-#define RSHIFT_N      &ht_shift_r RSHIFT N
+#define RSHIFT_N      &ht RSHIFT N
 #define RCTL_E        &ht RCTRL  E
 #define RALT_I        &ht RALT   I
 #define RGUI_O        &ht RGUI   O
