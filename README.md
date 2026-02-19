@@ -4,9 +4,10 @@ This repository contains my personal ZMK firmware configuration for the Corne (C
 
 ## Hardware
 
-- **Keyboard**: Corne (CRKBD) 3x6+3 split keyboard
+- **Keyboard**: Corne (CRKBD) 3x6+3 split keyboard (42 keys total)
 - **Controller**: nice!nano v2 (both halves)
-- **Firmware**: ZMK
+- **Display**: nice!view with nice-luffy-wanted module (optional, one pair)
+- **Firmware**: ZMK v0.3 (pinned)
 
 ## Features
 
@@ -175,15 +176,20 @@ Disabled layer (all keys inactive)
 - **JKL**: Toggle between Empty and Games layers
 
 ### Custom Behaviors
-- **Hold-Tap (Standard)**: Balanced hold-tap with 280ms tapping term for most modifiers
-- **Hold-Tap (Strict)**: Tap-preferred hold-tap with 300ms tapping term for shift keys to reduce false positives
-- **Quick-Tap**: 175ms quick-tap for rapid repeated taps
-- **Prior-Idle**: 150-200ms requirement to prevent accidental holds during fast typing
+- **Hold-Tap (ht)**: Unified balanced hold-tap behavior for all home row modifiers
+  - **Flavor**: Balanced (requires second key release while modifier held)
+  - **Tapping Term**: 280ms
+  - **Quick-Tap**: 175ms for rapid repeated taps
+  - **Prior-Idle**: 150ms requirement to prevent accidental holds during fast typing
+  - **Hold-Trigger-on-Release**: Defers hold/tap decision until after key release, fixing release-order sensitivity
+  - **Hold-Trigger-Key-Positions**: All 42 key positions configured to enable cross-hand and same-hand operations
 
-#### Home Row Mod Timing
-The configuration uses two different hold-tap behaviors to optimize typing experience:
-- **Standard timing** for Ctrl, Alt, GUI modifiers (280ms tapping term)
-- **Strict timing** for Shift modifiers (300ms, tap-preferred) to prevent accidental "fi" instead of "I" issues
+#### Home Row Mod Configuration
+The configuration uses a single unified hold-tap behavior optimized for reliability:
+- All modifiers (Shift, Ctrl, Alt, GUI) use the same `ht` behavior with 280ms tapping term
+- The `hold-trigger-on-release` feature eliminates issues with key release order
+- `require-prior-idle-ms=150` prevents accidental modifier activation during fast typing
+- Works with both same-hand and cross-hand key combinations (e.g., F+N for "N", J+I for "I")
 
 ## Configuration Files
 
@@ -200,11 +206,20 @@ config/
 
 ## Build Configuration
 
-The firmware is built for:
+The firmware is built for two keyboard pairs:
+
+### Plain Builds (no display)
 - Left half: `nice_nano_v2` + `corne_left`
 - Right half: `nice_nano_v2` + `corne_right`
 
-Builds are automated via GitHub Actions as defined in `build.yaml`.
+### Display Builds (with nice!view)
+- Left half: `nice_nano_v2` + `corne_left` + `nice_view_adapter` + `nice_luffy_wanted`
+- Right half: `nice_nano_v2` + `corne_right` + `nice_view_adapter` + `nice_luffy_wanted`
+
+### Settings Reset
+- Special build for clearing all settings: `nice_nano_v2` + `settings_reset`
+
+All builds are automated via GitHub Actions as defined in `build.yaml` using ZMK v0.3.
 
 ## Customization
 
@@ -213,17 +228,32 @@ Builds are automated via GitHub Actions as defined in `build.yaml`.
 - USB keyboard support (`CONFIG_ZMK_USB=y`)
 - USB boot protocol support for BIOS compatibility
 
+### Display Configuration
+- nice!view display support via `nice-luffy-wanted` module (displays battery, BT profile, custom artwork)
+- Display configuration is handled by the shield overlay, not corne.conf
+
 ### Disabled Features (Commented Out)
 - RGB underglow support
-- OLED display support
+- Built-in OLED display support (using nice!view instead)
 
 ## Installation
 
 1. Fork this repository
 2. Customize the keymap in `config/corne.keymap` to your preferences
 3. Push changes to trigger GitHub Actions build
-4. Download the generated firmware files
+4. Download the generated firmware files (artifacts from the build action)
 5. Flash the appropriate `.uf2` files to each half of your keyboard
+
+## Troubleshooting
+
+### Hardware Issues
+If you're experiencing intermittent key failures, especially with Mill-Max socketed nice!nano controllers, see the [Column Fix Guide](docs/column-fix-guide.md) for detailed troubleshooting steps.
+
+### Home Row Mods
+The current configuration uses a unified hold-tap behavior that works well for most typing styles. If you experience issues:
+- Adjust `require-prior-idle-ms` in `config/include/behaviors.dtsi` (currently 150ms)
+- Increase `tapping-term-ms` if you find holds aren't triggering (currently 280ms)
+- Adjust `quick-tap-ms` for faster repeated taps (currently 175ms)
 
 ## Layer Reference
 
