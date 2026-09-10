@@ -36,7 +36,8 @@ commands only generate documentation, not firmware.
 - **Keyboard**: Corne (CRKBD) 3x6+3 split keyboard (42 keys total)
 - **Controller**: nice!nano v2 (both halves)
 - **Display**: nice!view with the `nice_epaper` shield from `zmk-nice-oled` (optional, one pair)
-- **Firmware**: ZMK v0.3 (pinned)
+- **Firmware**: display pair on ZMK v0.3; plain pair on a pinned ZMK development
+  snapshot using Zephyr 4.1
 
 ## Features
 
@@ -247,26 +248,51 @@ config/
     └── macros.dtsi     # Custom macro definitions
 ```
 
+`config-plain/west.yml` selects the newer ZMK revision without the display
+module. Its `corne.keymap` includes `config/corne.keymap`; edit the shared
+keymap, not a second copy. `build-plain.yaml` loads the shared `corne.conf`
+and the appropriate half-specific `.conf` via `EXTRA_CONF_FILE`.
+
 ## Build Configuration
 
-The firmware is built for two keyboard pairs:
+Two independent workflow runs build the keyboard pairs. Their artifacts are
+isolated because the upstream reusable workflow merges all `artifact-*`
+uploads in its run.
 
-### Plain Builds (no display)
-- Left half: `nice_nano_v2` + `corne_left`
-- Right half: `nice_nano_v2` + `corne_right`
+| Pair | Workflow | Matrix | Download |
+|------|----------|--------|----------|
+| Plain | Build plain firmware (Zephyr 4.1) | `build-plain.yaml` | `firmware-plain-zephyr41` |
+| Display | Build display firmware (ZMK v0.3) | `build.yaml` | `firmware-display-zmk03` |
 
-### Display Builds (with nice!view)
+### Plain Builds (no display, Zephyr 4.1)
+- Left half: `nice_nano//zmk` + `corne_left` -> `plain-zephyr41-corne_left.uf2`
+- Right half: `nice_nano//zmk` + `corne_right` -> `plain-zephyr41-corne_right.uf2`
+
+The plain track pins ZMK and its reusable workflow to development commit
+`641514a97db345f499dd50b0360e594270f008fe`, whose manifest uses Zephyr
+`v4.1.0+zmk-fixes`. This is not a stable ZMK release. Keep the revision in
+`config-plain/west.yml` and `.github/workflows/build-plain.yml` in sync.
+
+### Display Builds (with nice!view, ZMK v0.3)
 - Left half: `nice_nano_v2` + `corne_left` + `nice_view_adapter` + `nice_epaper`
 - Right half: `nice_nano_v2` + `corne_right` + `nice_view_adapter` + `nice_epaper`
 
-### Settings Reset
-- Special build for clearing all settings: `nice_nano_v2` + `settings_reset`
-
-All builds are automated via GitHub Actions as defined in `build.yaml` using ZMK v0.3.
-The ZMK revision in `config/west.yml` and workflow tag in
+Files are named `display-zmk03-corne_left.uf2` and
+`display-zmk03-corne_right.uf2`. The ZMK revision in `config/west.yml` and workflow tag in
 `.github/workflows/build.yml` must be upgraded together. The display module is
 pinned to commit `46f824abb2bd41f1287c5c68abd14122af6042a3` to prevent upstream
 changes from unexpectedly changing the display build.
+
+### Settings Reset
+
+Each track includes its own `settings_reset` build, named
+`plain-zephyr41-settings_reset.uf2` or `display-zmk03-settings_reset.uf2`.
+These clear settings; they are not normal keyboard firmware and do not load
+the shared Corne keymap or `.conf` files.
+
+**Flash both halves of a physical keyboard from the same track.** Do not mix a
+Zephyr 4.1 left half with a ZMK v0.3 right half. Keep the previous working UF2
+files when trying the development track so both halves can be rolled back.
 
 ## Customization
 
@@ -281,8 +307,8 @@ changes from unexpectedly changing the display build.
   `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000`). Press a key to wake; allow time for
   Bluetooth to reconnect. The existing idle timeout is unchanged.
 - Right-half battery fetching and Bluetooth proxy reporting on the left/central
-  half. ZMK loads `corne_left.conf` in addition to the shared `corne.conf`, so
-  these central-only options do not apply to right-half or settings-reset builds.
+  half. Both tracks load `corne_left.conf` in addition to the shared `corne.conf`,
+  so these central-only options do not apply to right-half or settings-reset builds.
 
 ### Display Configuration
 - nice!view display support uses the `nice_epaper` shield from
@@ -311,9 +337,9 @@ changes from unexpectedly changing the display build.
 
 1. Fork this repository
 2. Customize the keymap in `config/corne.keymap` to your preferences
-3. Push changes to trigger GitHub Actions build
-4. Download the generated firmware files (artifacts from the build action)
-5. Flash the appropriate `.uf2` files to each half of your keyboard
+3. Push changes to trigger both GitHub Actions firmware workflows
+4. Download the artifact for your plain or display keyboard from the table above
+5. Flash the left and right `.uf2` files from the same track (not `settings_reset`)
 
 ## Troubleshooting
 

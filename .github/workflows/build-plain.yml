@@ -1,0 +1,12 @@
+name: Build plain firmware (Zephyr 4.1)
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    # Keep this revision in sync with config-plain/west.yml.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@641514a97db345f499dd50b0360e594270f008fe
+    with:
+      build_matrix_path: build-plain.yaml
+      config_path: config-plain
+      archive_name: firmware-plain-zephyr41

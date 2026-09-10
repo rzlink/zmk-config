@@ -8,12 +8,14 @@ split keyboard. It contains keymaps and device-tree config, not application code
 - **There is no local build, test, or lint step.** Firmware is compiled by GitHub
   Actions only.
 - `.github/workflows/build.yml` reuses `zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3`.
-- The build matrix lives in `build.yaml` (repo root) as `include:` entries of
-  `board` + `shield` combinations.
+- `.github/workflows/build-plain.yml` pins the plain builds to a ZMK development
+  commit using Zephyr 4.1; its SHA must match `config-plain/west.yml`.
+- Display and plain matrices live in `build.yaml` and `build-plain.yaml`.
+  Keep the tracks in separate workflow runs to isolate upstream artifact merging.
 - To verify a change: push (or open a PR), let the workflow run, and download the
   `.uf2` artifacts. Flash one `.uf2` to each keyboard half.
-- **ZMK is pinned to `v0.3`.** The revision in `config/west.yml` and the workflow tag
-  must stay in sync; bump both together when upgrading.
+- **Display ZMK is pinned to `v0.3`.** The revision in `config/west.yml` and the
+  `build.yml` workflow tag must stay in sync; bump both together when upgrading.
 
 ## Architecture
 
@@ -34,6 +36,10 @@ split keyboard. It contains keymaps and device-tree config, not application code
 - `config/corne_right.conf` — disables the board's USB keyboard default on the peripheral.
 - `config/west.yml` — west manifest; imports `zmk` plus the pinned `zmk-nice-oled`
   display module from the `mctechnology17` remote.
+- `config-plain/west.yml` — pins newer ZMK without the display module.
+- `config-plain/corne.keymap` — includes the shared `config/corne.keymap`.
+  `build-plain.yaml` loads shared and half-specific Kconfig via `EXTRA_CONF_FILE`;
+  do not duplicate the keymap, behavior fragments, or `.conf` files.
 - `docs/column-fix-guide.md` — hardware troubleshooting only, unrelated to firmware code.
 
 ## Conventions
@@ -51,7 +57,7 @@ split keyboard. It contains keymaps and device-tree config, not application code
   whether combos/behaviors need the new layer name — a new `build.yaml` entry is only
   needed for a new board/shield combo (rarely).
 - **Display builds** require both the `nice_view_adapter` and `nice_epaper` shields
-  in the `build.yaml` entry; plain builds omit them. There is also a `settings_reset`
-  build for clearing on-device settings.
+  in the `build.yaml` entry; plain builds in `build-plain.yaml` omit them.
+  Each track has a separately named `settings_reset` build for clearing settings.
 
 See `README.md` for the full per-layer reference and hardware details.

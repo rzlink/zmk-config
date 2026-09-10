@@ -1,0 +1,17 @@
+# Plain keyboards use the same keymap and Kconfig files as the display pair.
+# Absolute paths are expanded by the reusable workflow's build shell.
+---
+include:
+  - board: nice_nano//zmk
+    shield: corne_left
+    artifact-name: plain-zephyr41-corne_left
+    cmake-args: >-
+      -DEXTRA_CONF_FILE="${GITHUB_WORKSPACE}/config/corne.conf;${GITHUB_WORKSPACE}/config/corne_left.conf"
+  - board: nice_nano//zmk
+    shield: corne_right
+    artifact-name: plain-zephyr41-corne_right
+    cmake-args: >-
+      -DEXTRA_CONF_FILE="${GITHUB_WORKSPACE}/config/corne.conf;${GITHUB_WORKSPACE}/config/corne_right.conf"
+  - board: nice_nano//zmk
+    shield: settings_reset
+    artifact-name: plain-zephyr41-settings_reset
