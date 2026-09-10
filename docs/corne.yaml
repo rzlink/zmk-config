@@ -1,0 +1,181 @@
+layout: {zmk_keyboard: corne}
+layers:
+  BASE:
+  - ['`', Q, W, E, R, T, Y, U, I, O, P, \]
+  - - {t: TAB, h: LCTRL}
+    - {t: A, h: LGUI}
+    - {t: S, h: LALT}
+    - {t: D, h: LCTRL}
+    - {t: F, h: LSHIFT}
+    - G
+    - H
+    - {t: J, h: RSHIFT}
+    - {t: K, h: RCTRL}
+    - {t: L, h: RALT}
+    - {t: ;, h: RGUI}
+    - ''''
+  - [LSHFT, Z, X, C, V, B, N, M, ',', ., /, LGUI]
+  - - LALT
+    - {t: ESC, h: SYM}
+    - {t: SPACE, h: NAV}
+    - {t: RET, h: NAV}
+    - FUN
+    - BSPC
+  COLEM:
+  - ['`', Q, W, F, P, B, J, L, U, Y, ;, \]
+  - - {t: TAB, h: LCTRL}
+    - {t: A, h: LGUI}
+    - {t: R, h: LALT}
+    - {t: S, h: LCTRL}
+    - {t: T, h: LSHIFT}
+    - G
+    - M
+    - {t: N, h: RSHIFT}
+    - {t: E, h: RCTRL}
+    - {t: I, h: RALT}
+    - {t: O, h: RGUI}
+    - ''''
+  - [LSHIFT, Z, X, C, D, V, K, H, ',', ., /, LGUI]
+  - - LALT
+    - {t: ESC, h: SYM}
+    - {t: SPACE, h: NAV}
+    - {t: RET, h: NAV}
+    - FUN
+    - BSPC
+  SYM:
+  - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', +]
+  - [LCTRL, '!', '@', '#', $, '%', ^, '&', '*', (, ), '=']
+  - [LSHIFT, '~', '-', _, '{', '}', '[', ']', <, '>', ':', ;]
+  - - ''
+    - {type: held}
+    - MAINT
+    - SPACE
+    - RALT
+    - BSPC
+  FUN:
+  - [CAPS, F12, F7, F8, F9, PSCRN, F13, F14, F15, F16, F17, F18]
+  - [LCTRL, F11, F4, F5, F6, SLCK, F19, F20, F21, F22, F23, F24]
+  - [LSHIFT, F10, F1, F2, F3, PAUSE BREAK, INS, DEL, '', '', '', '']
+  - - LCTL
+    - LALT
+    - DEL
+    - ''
+    - {type: held}
+    - ''
+  NAV:
+  - [LGUI, '', '', END, '', Gui+Ctl+LEFT, HOME, PG DN, PG UP, END, UP, '']
+  - [LCTRL, HOME, '', '', RIGHT, Gui+Ctl+RIGHT, LEFT, DOWN, UP, RIGHT, '', '']
+  - [LSHIFT, '', '', '', '', LEFT, DOWN, '', '', '', '', '']
+  - - LCTL
+    - LALT
+    - {t: LSHFT, type: held}
+    - RSHFT
+    - RALT
+    - RCTL
+  GAMES:
+  - ['', '', '', UP, '', '', '', '', UP, '', '', '']
+  - [LCTRL, '', LEFT, DOWN, RIGHT, '', '', LEFT, DOWN, RIGHT, '', LCTRL]
+  - [QWERT, '', '', '', '', '', '', '', '', '', '', QWERT]
+  - [ESC, SPACE, RET, RET, SPACE, ESC]
+  QWERT:
+  - ['`', Q, W, E, R, T, Y, U, I, O, P, \]
+  - - {t: TAB, h: LCTRL}
+    - A
+    - S
+    - D
+    - F
+    - G
+    - H
+    - J
+    - K
+    - L
+    - ;
+    - ''''
+  - - {t: LSHFT, type: held}
+    - Z
+    - X
+    - C
+    - V
+    - B
+    - N
+    - M
+    - ','
+    - .
+    - /
+    - ''
+  - [LALT, ESC, SPACE, RET, DEL, BSPC]
+  MAINT:
+  - - BT CLR
+    - ''
+    - ''
+    - ''
+    - {t: BT, h: '3'}
+    - {t: BT, h: '0'}
+    - VOL UP
+    - ''
+    - ''
+    - ''
+    - ''
+    - BRI UP
+  - - {t: EMPTY, h: toggle}
+    - {t: GAMES, h: toggle}
+    - ''
+    - ''
+    - {t: BT, h: '4'}
+    - {t: BT, h: '1'}
+    - VOL DN
+    - ''
+    - ''
+    - ''
+    - ''
+    - BRI DEC
+  - - {t: COLEM, h: toggle}
+    - ''
+    - ''
+    - ''
+    - ''
+    - {t: BT, h: '2'}
+    - MUTE
+    - ''
+    - ''
+    - ''
+    - ''
+    - OUT TOG
+  - - ''
+    - {type: held}
+    - {type: held}
+    - ''
+    - ''
+    - ''
+  EMPTY:
+  - ['', '', '', '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '', '', '']
+combos:
+- p: [15, 16]
+  k: ESCAPE
+  l: [BASE, QWERT, COLEM]
+- p: [19, 20]
+  k: RETURN
+  l: [BASE, QWERT, COLEM, SYM, GAMES]
+- p: [15, 28]
+  k: \
+  l: [BASE, QWERT, COLEM]
+  a: bottom
+  o: 0.15
+- p: [20, 31]
+  k: /
+  l: [BASE, QWERT, COLEM]
+  a: bottom
+  o: 0.15
+- p: [19, 20, 21]
+  k: {t: EMPTY, h: toggle}
+  l: [EMPTY]
+  a: top
+  o: 0.5
+- p: [19, 20, 21]
+  k: {t: GAMES, h: toggle}
+  l: [GAMES]
+  a: top
+  o: 0.5

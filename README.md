@@ -2,11 +2,40 @@
 
 This repository contains my personal ZMK firmware configuration for the Corne (CRKBD) split keyboard using nice!nano v2 controllers.
 
+## Generated Keymap
+
+[View all nine layers and their combos](docs/corne.svg).
+
+`docs/corne.svg` is a generated snapshot of the firmware keymap, including
+tap/hold legends and layer-specific combos. The **Draw keymap** GitHub Actions
+workflow generates fresh YAML/SVG files after relevant pushes and pull requests,
+or when run manually. Download its `corne-keymap-diagram` artifact to review them.
+The workflow has read-only repository access and never commits updates; refresh
+the snapshot manually when changing the keymap.
+
+To regenerate locally with Python 3.13 in PowerShell, from the repository root:
+
+```powershell
+$venv = "$env:TEMP\zmk-config-keymap-drawer"
+python -m venv $venv
+& "$venv\Scripts\python.exe" -m pip install -r docs\keymap-drawer-requirements.txt
+
+& "$venv\Scripts\keymap.exe" -c docs\keymap-drawer.yaml parse -z config\corne.keymap -c 12 -l BASE COLEM SYM FUN NAV GAMES QWERT MAINT EMPTY -o docs\corne.yaml
+& "$venv\Scripts\keymap.exe" -c docs\keymap-drawer.yaml draw docs\corne.yaml -k corne_rotated -l LAYOUT_split_3x6_3 -o docs\corne.svg
+& "$venv\Scripts\python.exe" docs\validate-keymap.py docs\corne.yaml docs\corne.svg
+```
+
+This uses the pinned [Keymap Drawer](https://github.com/caksoylar/keymap-drawer)
+version in `docs/keymap-drawer-requirements.txt`. Installation and public layout
+downloads require internet access; the keymap is processed locally. Update
+`docs/validate-keymap.py` expectations after intentional keymap changes. These
+commands only generate documentation, not firmware.
+
 ## Hardware
 
 - **Keyboard**: Corne (CRKBD) 3x6+3 split keyboard (42 keys total)
 - **Controller**: nice!nano v2 (both halves)
-- **Display**: nice!view with nice-luffy-wanted module (optional, one pair)
+- **Display**: nice!view with the `nice_epaper` shield from `zmk-nice-oled` (optional, one pair)
 - **Firmware**: ZMK v0.3 (pinned)
 
 ## Features
@@ -169,11 +198,20 @@ Disabled layer (all keys inactive)
 ```
 
 ### Combos
-- **DF + GH**: Escape (works on Base, QWERTY, Colemak layers)
-- **JK**: Enter (works on most layers)
-- **DV**: Backslash
-- **KH**: Forward slash
-- **JKL**: Toggle between Empty and Games layers
+Combos use physical key positions, not the characters emitted by the active layer.
+All combos have a 30 ms timeout. The position grid is in `config/include/combos.dtsi`.
+
+| Positions | QWERTY positions | Colemak positions | Action | Active layers |
+|-----------|-----------------|-------------------|--------|---------------|
+| 15 + 16 | D + F | S + T | Escape | BASE, QWERT, COLEM |
+| 19 + 20 | J + K | N + E | Enter | BASE, QWERT, COLEM, SYM, GAMES |
+| 15 + 28 | D + V | S + D | Backslash | BASE, QWERT, COLEM |
+| 20 + 31 | K + M | E + H | Forward slash | BASE, QWERT, COLEM |
+| 19 + 20 + 21 | J + K + L | N + E + I | Toggle EMPTY off | EMPTY |
+| 19 + 20 + 21 | J + K + L | N + E + I | Toggle GAMES off | GAMES |
+
+The three-key combos exit their respective layer, revealing whichever layers remain
+active underneath; they do not switch directly between GAMES and EMPTY.
 
 ### Custom Behaviors
 - **Hold-Tap (ht)**: Unified balanced hold-tap behavior for all home row modifiers
@@ -181,21 +219,26 @@ Disabled layer (all keys inactive)
   - **Tapping Term**: 280ms
   - **Quick-Tap**: 175ms for rapid repeated taps
   - **Prior-Idle**: 150ms requirement to prevent accidental holds during fast typing
-  - **Hold-Trigger-on-Release**: Defers hold/tap decision until after key release, fixing release-order sensitivity
-  - **Hold-Trigger-Key-Positions**: All 42 key positions configured to enable cross-hand and same-hand operations
+  - **Hold-Trigger-on-Release**: Evaluates positional hold-tap restrictions on the other key's release rather than press
+  - **Hold-Trigger-Key-Positions**: All 42 positions allowed; no opposite-hand restriction is imposed
 
 #### Home Row Mod Configuration
 The configuration uses a single unified hold-tap behavior optimized for reliability:
 - All modifiers (Shift, Ctrl, Alt, GUI) use the same `ht` behavior with 280ms tapping term
-- The `hold-trigger-on-release` feature eliminates issues with key release order
-- `require-prior-idle-ms=150` prevents accidental modifier activation during fast typing
+- `require-prior-idle-ms=150` favors taps after recent typing to reduce accidental modifiers
 - Works with both same-hand and cross-hand key combinations (e.g., F+N for "N", J+I for "I")
+
+Thumb layer-taps (`SYM_ESC`, `NAV_SPC`, `NAV_ENT`) and mod-taps such as
+`LCTRL_TAB` use the separate upstream `&lt`/`&mt` defaults, not these `&ht`
+settings. Their behavior and the existing combo timings are unchanged.
 
 ## Configuration Files
 
 ```
 config/
 ├── corne.conf          # Hardware configuration
+├── corne_left.conf     # Central-only USB and peripheral battery reporting
+├── corne_right.conf    # Override the board's USB keyboard default on the peripheral
 ├── corne.keymap        # Main keymap definition
 ├── west.yml           # ZMK project configuration
 └── include/
@@ -213,24 +256,52 @@ The firmware is built for two keyboard pairs:
 - Right half: `nice_nano_v2` + `corne_right`
 
 ### Display Builds (with nice!view)
-- Left half: `nice_nano_v2` + `corne_left` + `nice_view_adapter` + `nice_luffy_wanted`
-- Right half: `nice_nano_v2` + `corne_right` + `nice_view_adapter` + `nice_luffy_wanted`
+- Left half: `nice_nano_v2` + `corne_left` + `nice_view_adapter` + `nice_epaper`
+- Right half: `nice_nano_v2` + `corne_right` + `nice_view_adapter` + `nice_epaper`
 
 ### Settings Reset
 - Special build for clearing all settings: `nice_nano_v2` + `settings_reset`
 
 All builds are automated via GitHub Actions as defined in `build.yaml` using ZMK v0.3.
+The ZMK revision in `config/west.yml` and workflow tag in
+`.github/workflows/build.yml` must be upgraded together. The display module is
+pinned to commit `46f824abb2bd41f1287c5c68abd14122af6042a3` to prevent upstream
+changes from unexpectedly changing the display build.
 
 ## Customization
 
 ### Enabled Features
 - Enhanced Bluetooth transmission power (`CONFIG_BT_CTLR_TX_PWR_PLUS_8=y`)
-- USB keyboard support (`CONFIG_ZMK_USB=y`)
-- USB boot protocol support for BIOS compatibility
+- USB keyboard and BIOS boot protocol support on the left/central half,
+  configured in `corne_left.conf`. The right half sends keys over Bluetooth
+  to the left; connecting its USB cable still supports charging and flashing.
+  `corne_right.conf` explicitly disables `CONFIG_ZMK_USB` to override the
+  nice!nano board's enabled default and avoid a Kconfig dependency warning.
+- Deep sleep after 15 minutes of inactivity (`CONFIG_ZMK_SLEEP=y`,
+  `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000`). Press a key to wake; allow time for
+  Bluetooth to reconnect. The existing idle timeout is unchanged.
+- Right-half battery fetching and Bluetooth proxy reporting on the left/central
+  half. ZMK loads `corne_left.conf` in addition to the shared `corne.conf`, so
+  these central-only options do not apply to right-half or settings-reset builds.
 
 ### Display Configuration
-- nice!view display support via `nice-luffy-wanted` module (displays battery, BT profile, custom artwork)
-- Display configuration is handled by the shield overlay, not corne.conf
+- nice!view display support uses the `nice_epaper` shield from
+  [mctechnology17/zmk-nice-oled](https://github.com/mctechnology17/zmk-nice-oled).
+  Its upstream README documents testing with ZMK v0.3.0.
+- The shield enables the display and custom status screen only for display
+  builds; plain builds remain display-free. No global display flags are needed
+  in `corne.conf`.
+- The left display shows the active layer, battery and connection/profile
+  information. All nine layers have short `display-name` labels. The right
+  display uses the module's default cat animation and local status widgets.
+- Each display shows its own battery with the default settings. The module
+  supports optional combined battery widgets, but those are not enabled by
+  this configuration.
+- Unlike the previous Luffy screen, `nice_epaper` defaults to blanking on idle.
+  The existing idle timeout and 15-minute deep-sleep setting are unchanged.
+- Battery proxy reporting exposes the right battery through an additional BLE
+  Battery Service. Many host battery menus show only one battery; displaying
+  both may require a compatible application.
 
 ### Disabled Features (Commented Out)
 - RGB underglow support
@@ -269,11 +340,15 @@ The current configuration uses a unified hold-tap behavior that works well for m
 | MAINTENANCE | 7 | System controls and toggles |
 | EMPTY | 8 | Disabled layer |
 
+The displayed `EMPTY` layer uses the firmware constant `LAYER_EMPTY` to avoid
+colliding with Zephyr's `EMPTY` macro. Its index and bindings are unchanged.
+
 ## Bluetooth Profiles
 
 - Profile 0-4: Available for different devices
 - Use maintenance layer to switch profiles
-- Clear all profiles option available
+- `BT_CLR` clears only the selected profile. Select each profile in turn to
+  clear multiple pairings; the settings-reset firmware clears on-device settings.
 
 ## Contributing
 

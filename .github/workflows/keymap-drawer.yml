@@ -1,0 +1,61 @@
+name: Draw keymap
+
+on:
+  push:
+    paths:
+      - "config/**"
+      - "docs/keymap-drawer.yaml"
+      - "docs/keymap-drawer-requirements.txt"
+      - "docs/validate-keymap.py"
+      - ".github/workflows/keymap-drawer.yml"
+  pull_request:
+    paths:
+      - "config/**"
+      - "docs/keymap-drawer.yaml"
+      - "docs/keymap-drawer-requirements.txt"
+      - "docs/validate-keymap.py"
+      - ".github/workflows/keymap-drawer.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out configuration
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.13"
+
+      - name: Install pinned diagram tooling
+        run: |
+          python -m venv .keymap-drawer-venv
+          .keymap-drawer-venv/bin/python -m pip install -r docs/keymap-drawer-requirements.txt
+          echo "$GITHUB_WORKSPACE/.keymap-drawer-venv/bin" >> "$GITHUB_PATH"
+
+      - name: Parse actual firmware bindings and draw Corne42
+        run: |
+          keymap -c docs/keymap-drawer.yaml parse -z config/corne.keymap -c 12 \
+            -l BASE COLEM SYM FUN NAV GAMES QWERT MAINT EMPTY -o docs/corne.yaml
+          keymap -c docs/keymap-drawer.yaml draw docs/corne.yaml \
+            -k corne_rotated -l LAYOUT_split_3x6_3 -o docs/corne.svg
+          python docs/validate-keymap.py docs/corne.yaml docs/corne.svg
+
+      # Artifact-only: this does not update the repository's diagram snapshot.
+      # Users may manually replace and commit snapshots later; this job never does.
+      - name: Upload parsed keymap and SVG
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: corne-keymap-diagram
+          path: |
+            docs/corne.yaml
+            docs/corne.svg
+          if-no-files-found: error

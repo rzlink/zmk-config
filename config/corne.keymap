@@ -18,7 +18,9 @@
 #define GAMES   5
 #define QWERT   6
 #define MAINT   7
-#define EMPTY   8
+#define LAYER_EMPTY 8
+
+#define TOG_EMPTY &tog LAYER_EMPTY
 
 // Home row mods macro
 // for qwerty layout
@@ -71,6 +73,7 @@
     compatible = "zmk,keymap";
 
         base_layer {
+            display-name = "BASE";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│  `~      │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │  \ |
@@ -89,6 +92,7 @@
         };
 
         colem_layer {
+            display-name = "COLEM";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│  `~      │  Q       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  ; :     │  \ |
@@ -107,6 +111,7 @@
         };
 
         symbol_layer {
+            display-name = "SYM";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│  `~      │  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │  +
@@ -125,6 +130,7 @@
         };
 
         function_layer {
+            display-name = "FUN";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│ CAPSLOCK │  F12     │  F7      │  F8      │  F9      │  PRINT   │   │  F13     │  F14     │  F15     │  F16     │  F17     │  F18
@@ -143,6 +149,7 @@
         };
 
         navigation_layer {
+            display-name = "NAV";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│  GUI     │          │          │  END     │          │ SCREEN_L │   │  HOME    │ PAGE DOWN│  PAGE UP │  END     │  UP      │
@@ -161,6 +168,7 @@
         };
 
         games_layer {
+            display-name = "GAMES";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│          │          │          │  UP      │          │          │   │          │          │  UP      │          │          │
@@ -179,6 +187,7 @@
         };
 
         qwert_layer {
+            display-name = "QWERT";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│  `~      │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │  \ |
@@ -197,13 +206,14 @@
         };
 
         maintenance_layer {
+            display-name = "MAINT";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│ CLEAR BT │          │          │          │PROFILE 3 │PROFILE 0 │   │  VOL+    │          │          │          │          │  BRIGHT+
         &bt BT_CLR &none      &none      &none   &bt BT_SEL 3 &bt BT_SEL 0  &kp C_VOL_UP &none      &none      &none      &none    &kp C_BRI_UP
     //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
     //│  EMPTY   │  GAMES   │          │          │PROFILE 4 │PROFILE 1 │   │  VOL-    │          │          │          │          │  BRIGHT-
-        &tog EMPTY &tog GAMES &none      &none   &bt BT_SEL 4 &bt BT_SEL 1  &kp C_VOL_DN &none      &none      &none      &none    &kp C_BRI_DEC
+        TOG_EMPTY  &tog GAMES &none      &none   &bt BT_SEL 4 &bt BT_SEL 1  &kp C_VOL_DN &none      &none      &none      &none    &kp C_BRI_DEC
     //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┬──────────┼──────────┤
     //│  COLEM   │          │          │          │          │PROFILE 2 │   │  MUTE    │          │          │          │          │  OUT_TOG
         &tog COLEM &none      &none      &none      &none     &bt BT_SEL 2  &kp C_MUTE   &none      &none      &none      &none    &out OUT_TOG
@@ -215,6 +225,7 @@
         };
 
         empty_layer {
+            display-name = "EMPTY";
             bindings = <
     //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
     //│          │          │          │          │          │          │   │          │          │          │          │          │

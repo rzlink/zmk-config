@@ -1,0 +1,27 @@
+# Used by both `keymap parse` and `keymap draw`.
+# Includes and aliases are expanded from config/corne.keymap, not copied here.
+# Run commands from the repository root so quoted includes resolve correctly.
+# No west checkout, firmware build, or upload to a diagram service is needed.
+# docs/corne.svg is a generated snapshot. Workflow artifacts do not update it.
+# To refresh it, regenerate locally or copy the SVG from corne-keymap-diagram.
+# Committing an updated snapshot is a separate, manual user decision.
+parse_config:
+  preprocess: true
+  zmk_combos:
+    combo_backslash:
+      align: bottom
+      offset: 0.15
+    combo_slash:
+      align: bottom
+      offset: 0.15
+    combo_tog_empty:
+      align: top
+      offset: 0.5
+    combo_tog_games:
+      align: top
+      offset: 0.5
+
+draw_config:
+  dark_mode: auto
+  use_local_cache: false
+  footer_text: "Tap / hold (BT: profile); layer names: hold unless toggle. Combos shown on active layers only."

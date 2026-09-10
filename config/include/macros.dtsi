@@ -1,6 +1,5 @@
 macros {
     ubuntu_reboot: ubuntu_reboot {
-        label = "macro_ubuntu_reboot";
         compatible = "zmk,behavior-macro";
         #binding-cells = <0>;
         wait-ms = <1000>;

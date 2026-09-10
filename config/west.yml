@@ -2,15 +2,16 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: whoop-t
-      url-base: https://github.com/whoop-t
+    - name: mctechnology17
+      url-base: https://github.com/mctechnology17
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: v0.3
       import: app/west.yml
-    - name: nice-luffy-wanted
-      remote: whoop-t
-      revision: main
+    - name: zmk-nice-oled
+      remote: mctechnology17
+      # main as of 2026-01-26; upstream documents testing with ZMK v0.3.0.
+      revision: 46f824abb2bd41f1287c5c68abd14122af6042a3
   self:
     path: config

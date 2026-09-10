@@ -3,7 +3,6 @@
 
 
 ht: hold_tap {
-    label = "hold_tap";
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "balanced";
@@ -16,7 +15,6 @@ ht: hold_tap {
 };
 
 mo_sl: behavior_mo_sl {
-    label = "mo_sl";
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
