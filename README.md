@@ -6,6 +6,8 @@ This repository contains my personal ZMK firmware configuration for the Corne (C
 
 [View all nine layers and their combos](docs/corne.svg).
 
+![Corne keymap showing all nine layers, tap/hold bindings, and combos](docs/corne.svg)
+
 `docs/corne.svg` is a generated snapshot of the firmware keymap, including
 tap/hold legends and layer-specific combos. The **Draw keymap** GitHub Actions
 workflow generates fresh YAML/SVG files after relevant pushes and pull requests,
